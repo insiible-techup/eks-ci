@@ -1,20 +1,16 @@
 name: Terraform plan
 
 on:
-  workflow_dispatch:
-    inputs:
-      cluster_name:
-        description: 'Name of the cluster'
-        required: true
-        default: 'cluster_name'
-        type: string
+   pull_request:
+       branches:
+           - main
       
 
 
 env:
     AWS_REGION: "us-east-1"
     tf_actions_working_dir: ./terraform
-    CLUSTER_NAME: ${{ inputs.cluster_name }}
+    CLUSTER_NAME: "test-cluster"
 
 jobs:
     Creating-terraform-plan:
