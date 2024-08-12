@@ -37,11 +37,6 @@ jobs:
 
             - name: terraform setup
               uses: hashicorp/setup-terraform@v3
-
-            - name: Terraform fmt
-              id: fmt
-              run: terraform fmt -check
-              continue-on-error: true
             
             - name: Terraform Init
               id: init
