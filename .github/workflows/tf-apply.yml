@@ -46,15 +46,15 @@ jobs:
 
       - name: Terraform apply
         id: apply
-        run: terraform apply --auto-approve
+        run: terraform apply -var="cluster_name=$CLUSTER_NAME"--auto-approve
 
-    #   - name: connecting to the cluster
-    #     run: |
-    #         aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.CLUSTER_NAME }}
+      - name: connecting to the cluster
+        run: |
+            aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.CLUSTER_NAME }}
 
-    #   - name: installing argocd
-    #     run: |
-    #           kubectl create namespace argocd
-    #           kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.12.0/manifests/install.yaml
+      - name: installing argocd
+        run: |
+              kubectl create namespace argocd
+              kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.12.0/manifests/install.yaml
 
        
