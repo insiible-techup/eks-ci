@@ -35,7 +35,7 @@ jobs:
       - name: installing kubectl
         uses: marcofranssen/setup-kubectl@v0.3.0
         with:
-          kubectl-version: 'latest'
+          kubectlVersion: 'latest'
 
       - name: terraform
         uses: hashicorp/setup-terraform@v3
