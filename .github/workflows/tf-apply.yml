@@ -57,5 +57,5 @@ jobs:
             #   kubectl create namespace argocd
             #   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.12.0/manifests/install.yaml
               kubectl patch configmap -n kube-system aws-auth --patch-file ./manifest/patch.yml
-              kubectl patch configmap -n kube-system aws-auth --patch-file ./manifest/clusterrole.yml
-              kubectl patch configmap -n kube-system aws-auth --patch-file ./manifest/clusterrolebinding.yml
+              kubectl apply -f ./manifest/clusterrole.yml
+              kubectl apply -f ./manifest/clusterrolebinding.yml
