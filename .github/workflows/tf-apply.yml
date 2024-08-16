@@ -35,7 +35,7 @@ jobs:
       - name: installing kubectl
         uses: marcofranssen/setup-kubectl@v0.3.0
         with:
-          kubectl-version: 'latest'
+          kubectlVersion: 'latest'
 
       - name: terraform
         uses: hashicorp/setup-terraform@v3
@@ -47,6 +47,7 @@ jobs:
       - name: Terraform apply
         id: apply
         run: terraform apply -var="cluster_name=${{ env.CLUSTER_NAME }}" --auto-approve
+
 
       - name: connecting to the cluster
         run: |
