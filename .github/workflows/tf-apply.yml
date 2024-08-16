@@ -8,7 +8,7 @@ on:
 env:
     AWS_REGION: "us-east-1"
     tf_actions_working_dir: ./terraform
-    # CLUSTER_NAME: "test-cluster"
+    CLUSTER_NAME: "test-cluster"
 
 jobs:
   if_merged:
@@ -46,7 +46,8 @@ jobs:
 
       - name: Terraform apply
         id: apply
-        run: terraform apply -var="cluster_name=$CLUSTER_NAME" --auto-approve
+        run: terraform apply -var="cluster_name=${{ env.CLUSTER_NAME }}" --auto-approve
+
 
       - name: connecting to the cluster
         run: |

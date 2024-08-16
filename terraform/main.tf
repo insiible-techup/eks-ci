@@ -6,7 +6,7 @@ provider "aws" {
 data "aws_availability_zones" "available" {}
 
 locals {
-  cluster_name = "${var.cluster_name}-${random_string.suffix.result}"
+  cluster_name = "gitops-${random_string.suffix.result}"
 }
 
 resource "random_string" "suffix" {
@@ -19,9 +19,9 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.0.4"
 
-  cluster_name    = local.cluster_name
+  cluster_name    = var.cluster_name
   cluster_version = "1.30"
-
+  
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
   cluster_endpoint_public_access = true
