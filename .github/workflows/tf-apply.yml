@@ -46,7 +46,7 @@ jobs:
 
       - name: Terraform apply
         id: apply
-        run: terraform apply --auto-approve
+        run: terraform apply -var="cluster_name=${{ env.CLUSTER_NAME }}"  --auto-approve
 
       - name: connecting to the cluster
         run: |
