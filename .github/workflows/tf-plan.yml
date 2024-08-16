@@ -10,7 +10,7 @@ on:
 env:
     AWS_REGION: "us-east-1"
     tf_actions_working_dir: ./terraform
-    # CLUSTER_NAME: "test-cluster"
+    CLUSTER_NAME: "test-cluster"
 
 jobs:
     Creating-terraform-plan:
