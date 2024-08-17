@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+repo=$1
+
+kubectl config set-context --current --namespace=argocd
+
+argocd repo add $repo
