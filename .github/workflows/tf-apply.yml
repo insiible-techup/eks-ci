@@ -8,7 +8,7 @@ on:
 env:
     AWS_REGION: "us-east-1"
     tf_actions_working_dir: ./terraform
-    #CLUSTER_NAME: "test-cluster"
+    CLUSTER_NAME: "test-cluster"
 
 jobs:
   if_merged:
@@ -46,16 +46,16 @@ jobs:
 
       - name: Terraform apply
         id: apply
-        run: terraform apply  --auto-approve # -var="cluster_name=${{ env.CLUSTER_NAME }}" 
+        run: terraform apply -var="cluster_name=${{ env.CLUSTER_NAME }}" --auto-approve #  
 
-    #   - name: connecting to the cluster and Installing argocd
-    #     run: |
-    #         aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.CLUSTER_NAME }}
-    #         bash ../argocd-install.sh
+      - name: connecting to the cluster and Installing argocd
+        run: |
+            aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.CLUSTER_NAME }}
+            bash ../argocd-install.sh
            
 
-    #   - name: Creating external access
-    #     run: |
-    #           bash ../access_creation.sh
+      - name: Creating external access
+        run: |
+              bash ../access_creation.sh
               
               
