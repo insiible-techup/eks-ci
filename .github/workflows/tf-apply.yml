@@ -48,14 +48,14 @@ jobs:
         id: apply
         run: terraform apply  --auto-approve # -var="cluster_name=${{ env.CLUSTER_NAME }}" 
 
-    #   - name: connecting to the cluster and Installing argocd
-    #     run: |
-    #         aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.CLUSTER_NAME }}
-    #         bash ../argocd-install.sh
+      - name: connecting to the cluster and Installing argocd
+        run: |
+            aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.CLUSTER_NAME }}
+            bash ../argocd-install.sh
            
 
-    #   - name: Creating external access
-    #     run: |
-    #           bash ../access_creation.sh
+      - name: Creating external access
+        run: |
+              bash ../access_creation.sh
               
               
