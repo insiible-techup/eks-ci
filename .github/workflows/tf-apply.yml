@@ -51,11 +51,11 @@ jobs:
       - name: connecting to the cluster and Installing argocd
         run: |
             aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.CLUSTER_NAME }}
-            bash ../argocd-install.sh
+            bash ../scripts/argocd-install.sh
            
 
       - name: Creating external access
         run: |
-              bash ../access_creation.sh
+              bash ../scripts/access_creation.sh
               
               
